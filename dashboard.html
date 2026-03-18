@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Vectoris Global</title>
+    <meta name="description" content="Panel de control de clientes - Gestiona tus paquetes y envíos">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Preload -->
+    <link rel="preload" href="js/dashboard.js" as="script">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+                <span>Vectoris Global</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="tarifas.html" class="nav-link">Tarifas</a>
+                <a href="recursos.html" class="nav-link">Recursos</a>
+            </div>
+            
+            <div class="nav-actions">
+                <span class="user-welcome" id="navUserName">Cargando...</span>
+                <button class="btn btn-outline" onclick="logout()">Cerrar Sesión</button>
+            </div>
+            
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>📦 Mi Dashboard</h1>
+            <div class="user-info">
+                <div class="name" id="userName">Cargando...</div>
+                <div class="locker" id="userLocker">Casillero: Cargando...</div>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-value" id="totalGuides">0</div>
+                        <div class="stat-label">Total de Guías</div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-value" id="confirmedGuides">0</div>
+                        <div class="stat-label">Envíos Confirmados</div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-value" id="pendingGuides">0</div>
+                        <div class="stat-label">Pendientes</div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-value" id="totalCost">$0</div>
+                        <div class="stat-label">Costo Total</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Guides Section -->
+            <section class="guides-section">
+                <h2 class="section-title">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                    Mis Guías
+                </h2>
+                <div class="guides-grid" id="guidesContainer">
+                    <!-- Guías se cargarán dinámicamente -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Package Details -->
+    <div id="packageModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalles del Paquete</h3>
+                <button class="modal-close" onclick="closeModal('packageModal')">×</button>
+            </div>
+            <div class="modal-body" id="packageDetails">
+                <!-- Details will be loaded dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('packageModal')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - Vectoris Global</title>
+    <meta name="description" content="Panel de control administrativo - Gestión completa del sistema">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Preload -->
+    <link rel="preload" href="js/admin.js" as="script">
+</head>
+<body>
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="admin-logo">
+            <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+            </svg>
+            <span>Vectoris Admin</span>
+        </div>
+        
+        <nav class="admin-nav">
+            <a href="#dashboard" class="admin-nav-item active" onclick="showSection('dashboard')">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                Dashboard
+            </a>
+            <a href="#clientes" class="admin-nav-item" onclick="showSection('clientes')">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+                Clientes
+            </a>
+            <a href="#paquetes" class="admin-nav-item" onclick="showSection('paquetes')">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+                Paquetes
+            </a>
+            <a href="#pagos" class="admin-nav-item" onclick="showSection('pagos')">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Pagos
+            </a>
+            <a href="#contenedores" class="admin-nav-item" onclick="showSection('contenedores')">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+                Contenedores
+            </a>
+            <a href="#tarifas" class="admin-nav-item" onclick="showSection('tarifas')">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Tarifas
+            </a>
+            <a href="#recursos" class="admin-nav-item" onclick="showSection('recursos')">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+                Recursos
+            </a>
+            <a href="#configuracion" class="admin-nav-item" onclick="showSection('configuracion')">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                Configuración
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Admin Main Content -->
+    <main class="admin-main" id="adminMain">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="btn btn-outline btn-sm" onclick="toggleSidebar()">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <h1 id="sectionTitle">Dashboard</h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="admin-info">
+                    <span class="admin-name">Administrador</span>
+                    <button class="btn btn-outline btn-sm" onclick="logout()">Salir</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="admin-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="section-content">
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-value" id="totalClients">0</div>
+                        <div class="stat-label">Total Clientes</div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-value" id="activeClients">0</div>
+                        <div class="stat-label">Clientes Activos</div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-value" id="pendingClients">0</div>
+                        <div class="stat-label">Pendientes</div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-value" id="totalPackages">0</div>
+                        <div class="stat-label">Total Paquetes</div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3 class="admin-card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Actividad Reciente
+                        </h3>
+                    </div>
+                    <div class="recent-packages-list" id="recentActivity">
+                        <!-- Recent activity will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clients Section -->
+            <section id="clientes-section" class="section-content" style="display: none;">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3 class="admin-card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            Gestión de Clientes
+                        </h3>
+                        <div class="admin-card-actions">
+                            <button class="btn btn-primary" onclick="addNewClient()">+ Agregar Cliente</button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <input type="text" id="clientSearch" placeholder="Buscar clientes..." onkeyup="searchClients()">
+                        <button class="btn btn-outline" onclick="exportClients()">Exportar</button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Usuario</th>
+                                    <th>Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Ciudad</th>
+                                    <th>Casillero</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clientsTableBody">
+                                <!-- Clients will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Packages Section -->
+            <section id="paquetes-section" class="section-content" style="display: none;">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3 class="admin-card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                            </svg>
+                            Gestión de Paquetes
+                        </h3>
+                        <div class="admin-card-actions">
+                            <button class="btn btn-primary" onclick="addNewPackage()">+ Agregar Paquete</button>
+                            <button class="btn btn-outline" onclick="loadAvailableClients()">Actualizar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <input type="text" id="packageSearch" placeholder="Buscar paquetes..." onkeyup="searchPackages()">
+                        <select id="packageFilter" onchange="filterPackages()">
+                            <option value="">Todos los estados</option>
+                            <option value="pending">Pendientes</option>
+                            <option value="selected">Seleccionados</option>
+                            <option value="confirmed">Confirmados</option>
+                        </select>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Tracking</th>
+                                    <th>Cliente</th>
+                                    <th>Piezas</th>
+                                    <th>Peso</th>
+                                    <th>Volumen</th>
+                                    <th>Método</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="packagesTableBody">
+                                <!-- Packages will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payments Section -->
+            <section id="pagos-section" class="section-content" style="display: none;">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3 class="admin-card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Gestión de Pagos
+                        </h3>
+                        <div class="admin-card-actions">
+                            <button class="btn btn-primary" onclick="generatePayments()">Generar Pagos</button>
+                            <button class="btn btn-outline" onclick="exportPayments()">Exportar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Guías</th>
+                                    <th>Monto Total</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentsTableBody">
+                                <!-- Payments will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Containers Section -->
+            <section id="contenedores-section" class="section-content" style="display: none;">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3 class="admin-card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                            Gestión de Contenedores
+                        </h3>
+                        <div class="admin-card-actions">
+                            <button class="btn btn-primary" onclick="addNewContainer()">+ Nuevo Contenedor</button>
+                            <button class="btn btn-secondary" onclick="optimizeAllContainers()">Optimizar Todo</button>
+                            <button class="btn btn-outline" onclick="analyzeProfitability()">💰 Analizar Ganancias</button>
+                            <button class="btn btn-info" onclick="analyzeAerialClients()">✈️ Analizar Clientes Aéreos</button>
+                        </div>
+                    </div>
+                    
+                    <div class="container-grid" id="containersGrid">
+                        <!-- Containers will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tariffs Section -->
+            <section id="tarifas-section" class="section-content" style="display: none;">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3 class="admin-card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Configuración de Tarifas por Ciudad
+                        </h3>
+                        <div class="admin-card-actions">
+                            <button class="btn btn-primary" onclick="addNewCityTariff()">+ Agregar Ciudad</button>
+                            <button class="btn btn-secondary" onclick="guardarTarifasPorCiudad()">Guardar Cambios</button>
+                        </div>
+                    </div>
+                    
+                    <div class="city-tariffs-management">
+                        <h4>🌍 Tarifas por Ciudad</h4>
+                        <div class="city-tariffs-grid" id="cityTariffsGrid">
+                            <!-- City tariffs will be loaded here dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="default-tariffs">
+                        <h4>📊 Tarifas Generales (Respaldo)</h4>
+                        <div class="tarifas-editor">
+                            <div class="tarifa-group">
+                                <h4>✈️ Tarifas Aéreas Generales (por libra)</h4>
+                                <div class="tarifa-row">
+                                    <span>1 - 10 lbs</span>
+                                    <div class="tarifa-input">
+                                        <span>$</span>
+                                        <input type="number" value="5.50" step="0.01" class="aereo-rate" data-min="1" data-max="10">
+                                    </div>
+                                </div>
+                                <div class="tarifa-row">
+                                    <span>11 - 20 lbs</span>
+                                    <div class="tarifa-input">
+                                        <span>$</span>
+                                        <input type="number" value="4.80" step="0.01" class="aereo-rate" data-min="11" data-max="20">
+                                    </div>
+                                </div>
+                                <div class="tarifa-row">
+                                    <span>21 - 50 lbs</span>
+                                    <div class="tarifa-input">
+                                        <span>$</span>
+                                        <input type="number" value="4.20" step="0.01" class="aereo-rate" data-min="21" data-max="50">
+                                    </div>
+                                </div>
+                                <div class="tarifa-row">
+                                    <span>+51 lbs</span>
+                                    <div class="tarifa-input">
+                                        <span>$</span>
+                                        <input type="number" value="3.90" step="0.01" class="aereo-rate" data-min="51" data-max="999">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tarifa-group">
+                                <h4>🚢 Tarifas Marítimas Generales (por pie cúbico)</h4>
+                                <div class="tarifa-row">
+                                    <span>1 - 10 cuft</span>
+                                    <div class="tarifa-input">
+                                        <span>$</span>
+                                        <input type="number" value="8.50" step="0.01" class="maritimo-rate" data-min="1" data-max="10">
+                                    </div>
+                                </div>
+                                <div class="tarifa-row">
+                                    <span>11 - 20 cuft</span>
+                                    <div class="tarifa-input">
+                                        <span>$</span>
+                                        <input type="number" value="7.80" step="0.01" class="maritimo-rate" data-min="11" data-max="20">
+                                    </div>
+                                </div>
+                                <div class="tarifa-row">
+                                    <span>21 - 50 cuft</span>
+                                    <div class="tarifa-input">
+                                        <span>$</span>
+                                        <input type="number" value="6.90" step="0.01" class="maritimo-rate" data-min="21" data-max="50">
+                                    </div>
+                                </div>
+                                <div class="tarifa-row">
+                                    <span>+51 cuft</span>
+                                    <div class="tarifa-input">
+                                        <span>$</span>
+                                        <input type="number" value="5.90" step="0.01" class="maritimo-rate" data-min="51" data-max="999">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section id="recursos-section" class="section-content" style="display: none;">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3 class="admin-card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                            Gestión de Recursos
+                        </h3>
+                    </div>
+                    <div class="resources-content">
+                        <p>Sección de recursos en desarrollo...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration Section -->
+            <section id="configuracion-section" class="section-content" style="display: none;">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h3 class="admin-card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            Configuración del Sistema
+                        </h3>
+                        <div class="admin-card-actions">
+                            <button class="btn btn-primary" onclick="saveConfiguration()">Guardar Cambios</button>
+                        </div>
+                    </div>
+                    <div class="configuration-content">
+                        <p>Sección de configuración en desarrollo...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Add Client Modal -->
+    <div id="addClientModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Agregar Nuevo Cliente</h3>
+                <button class="modal-close" onclick="closeModal('addClientModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="addClientForm" onsubmit="saveNewClient(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" id="clientName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Usuario</label>
+                            <input type="text" id="clientUsername" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="clientEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="tel" id="clientPhone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Ciudad</label>
+                            <select id="clientCity" required>
+                                <option value="">Selecciona una ciudad</option>
+                                <option value="Caracas">Caracas</option>
+                                <option value="Valencia">Valencia</option>
+                                <option value="Maracaibo">Maracaibo</option>
+                                <option value="Maracay">Maracay</option>
+                                <option value="Barquisimeto">Barquisimeto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Casillero</label>
+                            <input type="text" id="clientLocker" placeholder="Ej: VE-2024-1234">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

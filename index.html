@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectoris Global - Sistema de Casilleros</title>
+    <meta name="description" content="Sistema integral de casilleros internacionales con gestión de paquetes, tarifas por ciudad y seguimiento en tiempo real">
+    <meta name="keywords" content="casilleros, paquetes internacionales, envíos, Venezuela, Miami, logística">
+    <meta name="author" content="Vectoris Global">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vectoris Global - Sistema de Casilleros">
+    <meta property="og:description" content="Gestiona tus paquetes internacionales con nuestro sistema integral de casilleros">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230A2F44'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/components.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <svg width="60" height="60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+            </div>
+            <h2>Vectoris Global</h2>
+            <p>Cargando sistema...</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+                <span>Vectoris Global</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#inicio" class="nav-link active">Inicio</a>
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="#tarifas" class="nav-link">Tarifas</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn btn-outline" onclick="showLoginModal()">
+                    Iniciar Sesión
+                </button>
+                <button class="btn btn-primary" onclick="showRegisterModal()">
+                    Registrarse
+                </button>
+            </div>
+            
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Tu Casillero Internacional
+                    <span class="highlight">Inteligente</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Sistema completo de gestión de paquetes con tarifas personalizadas por ciudad, 
+                    seguimiento en tiempo real y control total de tus envíos.
+                </p>
+                
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large" onclick="showRegisterModal()">
+                        Comenzar Ahora
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </button>
+                    <button class="btn btn-outline btn-large" onclick="scrollToSection('servicios')">
+                        Ver Servicios
+                    </button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Clientes Activos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Ciudades Cubiertas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Soporte</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="card-3d tracking-card">
+                        <div class="card-header">
+                            <span class="card-icon">📦</span>
+                            <span class="card-title">Tracking</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="tracking-number">VG-2024-1234</div>
+                            <div class="tracking-status">En tránsito</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-3d price-card">
+                        <div class="card-header">
+                            <span class="card-icon">💰</span>
+                            <span class="card-title">Tarifa</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="price-city">Caracas</div>
+                            <div class="price-amount">$5.50/lb</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-3d status-card">
+                        <div class="card-header">
+                            <span class="card-icon">✅</span>
+                            <span class="card-title">Estado</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="status-text">Entregado</div>
+                            <div class="status-date">Hoy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Soluciones integrales para tus envíos internacionales</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Casillero Personal</h3>
+                    <p class="service-description">
+                        Obtén tu casillero internacional exclusivo con dirección en Miami para recibir tus paquetes.
+                    </p>
+                    <ul class="service-features">
+                        <li>Dirección única</li>
+                        <li>Recepción automática</li>
+                        <li>Notificaciones instantáneas</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Gestión Inteligente</h3>
+                    <p class="service-description">
+                        Sistema avanzado de gestión con seguimiento en tiempo real y control total de tus envíos.
+                    </p>
+                    <ul class="service-features">
+                        <li>Tracking en vivo</li>
+                        <li>Dashboard personal</li>
+                        <li>Reportes detallados</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Tarifas por Ciudad</h3>
+                    <p class="service-description">
+                        Precios personalizados según tu ubicación. Tarifas específicas para cada ciudad de Venezuela.
+                    </p>
+                    <ul class="service-features">
+                        <li>Caracas: $5.50/lb</li>
+                        <li>Valencia: $4.80/lb</li>
+                        <li>Maracaibo: $5.20/lb</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Envíos Rápidos</h3>
+                    <p class="service-description">
+                        Opciones de envío aéreo y marítimo con los mejores tiempos de entrega del mercado.
+                    </p>
+                    <ul class="service-features">
+                        <li>Aéreo: 3-5 días</li>
+                        <li>Marítimo: 15-20 días</li>
+                        <li>Re-empaque disponible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Seguro y Confiable</h4>
+                        <p>Tus paquetes están asegurados y protegidos durante todo el proceso.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Entrega a Tiempo</h4>
+                        <p>Comprometidos con los tiempos de entrega pactados para cada servicio.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75 9.75 9.75 0 00-9.75-9.75z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Soporte 24/7</h4>
+                        <p>Asistencia continua para resolver cualquier duda o inconveniente.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content">
+                        <h4>Seguridad Total</h4>
+                        <p>Tus datos y paquetes están protegidos con los más altos estándares de seguridad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para comenzar?</h2>
+                <p>Únete a miles de clientes que ya confían en Vectoris Global para sus envíos internacionales.</p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary btn-large" onclick="showRegisterModal()">
+                        Crear mi Cuenta
+                    </button>
+                    <button class="btn btn-outline btn-large" onclick="scrollToSection('contacto')">
+                        Contactar Ventas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                        <span>Vectoris Global</span>
+                    </div>
+                    <p class="footer-description">
+                        Tu socio confiable para envíos internacionales. 
+                        Casilleros inteligentes con tecnología de punta.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 2.163c-3.259 0-3.667.014-4.947.072-2.358.107-3.633.877-3.78 2.237-.067 1.28-.081 1.689-.081 4.948 0 3.259.014 3.668.072 4.948.107 2.358.877 3.633 2.237 3.78 1.28.067 1.689.081 4.948.081 3.259 0 3.668-.014 4.948-.072 2.358-.107 3.633-.877 3.78-2.237.067-1.28.081-1.689.081-4.948 0-3.259-.014-3.667-.072-4.947-.107-2.358-.877-3.633-2.237-3.78-1.28-.067-1.689-.081-4.948-.081zm0 3.678a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 7.425a2.925 2.925 0 110-5.85 2.925 2.925 0 015.85 0zm6.375-8.625a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="registro.html">Crear Casillero</a></li>
+                        <li><a href="dashboard.html">Mi Dashboard</a></li>
+                        <li><a href="tarifas.html">Ver Tarifas</a></li>
+                        <li><a href="recursos.html">Recursos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Soporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul class="footer-links">
+                        <li>📧 info@vectorisglobal.com</li>
+                        <li>📞 +1-305-123-4567</li>
+                        <li>📍 Miami, FL, USA</li>
+                        <li>💬 WhatsApp: +58-412-123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vectoris Global. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Iniciar Sesión</h3>
+                <button class="modal-close" onclick="closeModal('loginModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Usuario o Email</label>
+                        <input type="text" id="loginUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-full">Iniciar Sesión</button>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <p>¿No tienes cuenta? <a href="#" onclick="switchToRegister()">Regístrate aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Crear Cuenta</h3>
+                <button class="modal-close" onclick="closeModal('registerModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" id="registerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Usuario</label>
+                        <input type="text" id="registerUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel" id="registerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ciudad</label>
+                        <select id="registerCity" required>
+                            <option value="">Selecciona tu ciudad</option>
+                            <option value="Caracas">Caracas</option>
+                            <option value="Valencia">Valencia</option>
+                            <option value="Maracaibo">Maracaibo</option>
+                            <option value="Maracay">Maracay</option>
+                            <option value="Barquisimeto">Barquisimeto</option>
+                            <option value="Ciudad Guayana">Ciudad Guayana</option>
+                            <option value="Maturín">Maturín</option>
+                            <option value="San Cristóbal">San Cristóbal</option>
+                            <option value="La Guaira">La Guaira</option>
+                            <option value="Puerto Ordaz">Puerto Ordaz</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirmar Contraseña</label>
+                        <input type="password" id="registerPasswordConfirm" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-full">Crear Cuenta</button>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <p>¿Ya tienes cuenta? <a href="#" onclick="switchToLogin()">Inicia sesión aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
